@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>HTML Form Response</title>
+</head>
+<body>
+    <h1>Here's what we've got...</h1>
+    <p> Genre: {{genre}}<br/>
+        Tempo: {{tempo}}<br/>
+    </p>
+
+    <p>{% for track in tracks %}
+        {{track[0]}} by {{track[1]}} <br/>
+        <img src="{{track[3]}}" width="100px"/>
+    {% endfor %}
+    </p>
+</body>
+</html>
