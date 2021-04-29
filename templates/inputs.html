@@ -2,46 +2,45 @@
 <html>
 <head>
     <meta charset="utf8"/>
-    <title>HTML Forms Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='html5reset.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <title>Music App Home</title>
 </head>
 <body>
+    <header>
+        <nav><a href="/">Home</a></span></nav>
+    </header>
+<main>
 <h1>Welcome to Mariele's Music App!</h1>
     <p>
-    Answer the following questions to get song recommendations and view music videos.
-    <form action="/handle_form" method="POST">
+    Answer the following questions to get song recommendations and then view music videos or open the song in the Spotify web player.
+    <form action="/results" method="POST">
     </p>
-    <p>First, pick a genre.</p>
-    <input type="radio" name="genre" value="indie">Indie<br/>
+    <h2>First, pick a genre.</h2>
+    <input type="radio" name="genre" value="indie" required>Indie<br/>
     <input type="radio" name="genre" value="pop">Pop<br/>
     <input type="radio" name="genre" value="hip-hop">Hip-hop<br/>
     <input type="radio" name="genre" value="emo">Emo<br/>
     <input type="radio" name="genre" value="rock">Rock<br/>
     <input type="radio" name="genre" value="alternative">Alternative<br/>
     
-    <!-- <p>
-        On a scale of 1-10, how much do you want to dance?
-        <select name="danceability">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>         
-        </select>
 
-    </p> -->
+    <h2>
+        What type of results do you want to see?</h2>
+        <input type="radio" name="sort" value="popularity" required>Most popular<br/>
+        <input type="radio" name="sort" value="obscurity">Most obscure<br/>
+        <input type="radio" name="sort" value="speed (slow)">Slow songs</br>   
+        <input type="radio" name="sort" value="danceability">I just wanna dance</br>
+        <input type="radio" name="sort" value="random">Shuffle it!</br>
 
-    <p>
-        Now, pick your tempo.<br/>
-        <input type="radio" name="tempo" value="fast" required> fast beats, pls<br/>
-        <input type="radio" name="tempo" value="IDK"> I don't care <br/>
-        <input type="radio" name="tempo" value="slow"> Slow it down for me</br>   
+
+   
     </p>
-    <input type="submit" value="Submit Form"/>
+    <input type="submit" value="Get recommendations"/>
 
     <!-- <p>
         Do you want something more acoustic or electric?<br>
@@ -52,5 +51,6 @@
     </p> -->
 
 </form>
+</main>
 </body>
 </html>

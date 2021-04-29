@@ -2,18 +2,32 @@
 <html>
 <head>
     <meta charset="utf8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='html5reset.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
     <title>HTML Form Response</title>
 </head>
 <body>
-    <h1>Here's what we've got...</h1>
-    <p> Genre: {{genre}}<br/>
-        Tempo: {{tempo}}<br/>
+    <header>
+        <nav><a href="/">Home</a></span></nav>
+    </header>
+<main>
+    <h1>Your Top Results</h1>
+    <p><strong>Genre</strong>: {{genre}}<br/>
+    <strong>Sorted by:</strong> {{sort}}<br/>
     </p>
-
-    <p>{% for track in tracks %}
-        {{track[0]}} by {{track[1]}} <br/>
-        <img src="{{track[3]}}" width="100px"/>
+<form action="/play-music" method="POST">
+    <table><tbody>
+    <tr><th></th><th></th><th>Track</th><th>Album</th><th>Artist</th><th>Popularity</th><th>Tempo</th><th>Danceability</th></tr>
+    {% for track in tracks %}
+    <tr><td><input type="radio" name="selection" value="{{track[0]}}+{{track[1]}}" required></td><td><img src="{{track[3]}}" width="100px" height="100px"/></td><td>"{{track[0]}}"</td><td>{{track[-4]}}</td><td>{{track[1]}}</td><td>{{track[-3]}}</td><td>{{track[-2]}}</td><td>{{track[-1]}}</td></tr>
     {% endfor %}
-    </p>
+    </tbody>
+    </table>
+    <input type="submit" value="Select"/>
+</form>
+</main>
 </body>
 </html>
