@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='html5reset.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <title>Play Music</title>
+</head>
+<body>
+    <header>
+        <nav><a href="/">Home</a></span></nav>
+    </header>
+<main>
+<h1>{{track}} by {{artist}}</h1>
+{% if youtube_url != 'None' %}
+<p><a href="{{youtube_url}}" target="_blank">Watch music video on Youtube >></a><br/>
+<p><a href="{{spotify_url}}" target="_blank">Listen on the Spotify web app >></a></p>
+<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="http://youtube.com/embed/{{youtube_url}}[33:]"></iframe>
+{% else %}
+<p>There are no videos available. <br/>
+<a href="{{spotify_url}}" target="_blank">Listen on the Spotify web app >></a>
+{% endif %}
+</main>
+</body>
+</html>
